@@ -2,6 +2,11 @@
 COMSV (Cancer Optical Mapping based Structural Variation detection) is a pipeline for SV detection based on nanochannel optical mapping data. COMSV accepts .oma (OM Alignment) format files as alignment results and .cmap (consensus map) file as refrence genome maps.
 
 Copyright &copy; 2023  Le Li (<ll863@cornell.edu>)
+
+![alt text](https://github.com/kevingroup/COMSV/blob/main/FigPipelines.png?raw=true)
+
+The COMSV pipelines, which include the indel pipeline (**a-d**) and the complex SV pipeline (**e-f**). **a** Observed-to-expected distance ratios between two labels can deviate from 1 due to scaling or alignment errors (first row). After normalization, for alignments that still have these abnormal ratios (second row, dashed rectangles), the mutually reinforcing ones are considered indel candidates while the others are discarded (third row). Isolated label pairs with abnormal distances are instead corrected (fourth row, green bar). **b** Adjacent label pairs are collected from individual molecules to form candidate indel regions based on their overlaps, which enables the collection of distances between non-adjacent labels from a molecule if they are adjacent in another molecule (shown in green). **c** For each label pair, the collected distances are clustered to identify the number of distinct alleles and the number of molecules that support each of them. **d** For each potential indel region, the clustering result of each label pair suggests an initial SV type, and the final SV type of the whole region is determined by considering these suggestions jointly. **e** Different types of SVs that can be identified from split-alignments. An SV break point is called if a split alignment suggests an SV event, while a complete SV is called if the full span of the SV can be determined. **f** An example of calling SV break points and complete SVs. The reference is repeatedly displayed multiple times to show the split-alignment of each molecule clearly. Vertical dotted lines mark key aligned labels that define the boundary of each aligned segment on the reference. The corresponding labels on the reference are shown in red. Break point information is first collected from individual molecules and then considered together to refine the break point locations and determine whether complete SVs can be called.
+
 ## License
 See LICENSE.
 
@@ -39,6 +44,9 @@ Please rename the chromosome IDs in the alignment to be **positive integers** be
 COMSV support SV detection for other genomes, but remember to change chromosome IDs to be integers.
 
 COMSV may have problem to call SVs for the alignments with extremely long molecules/contig (e.g., >100Mbp) or with extremely high depth (e.g., >1000x). Current version is not optimized for these extreme cases as it will take much more memory and running time. Please feel free to leave your comments if you face this issue, and we can specifically modified the program for your needs.
+
+## Data availability
+All simulation data and real cancer data used in the following paper are available upon request.
 
 ## Citation
 
