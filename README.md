@@ -37,7 +37,16 @@ There are several components to call SVs in our pipeline:
     run_Comsv_Complex.sh: this component call complex SVs based on molecule alignments, contig alignments, as well as two-round split alignment with c++ program `COMSV_complex`. This script outputs three lists of complex SVs, which can be integrated into one list by using `assemble_SVs.sh`. In the header of this script, you can change the sample name, label, alignment filename, and reference filename for your own use. A simple use of `COMSV_complex` with default parameters is included. Please use `./COMSV_complex -help` for help of setting parameters of `COMSV_complex`.
 
     assemble_SVs.sh: this script does postprocessing and integrates the SVs called by the previous components into three lists of SVs: indel list, invdup list, and translocation list. Remember to change the sample name `smp` to the one used in SV detections.
+
+## Predicting scores of indels called from molecule alignments
+`score_pred.py` provides score prediction for indels. It requires the python package `sklearn`.
+
+    python score_pred.py INPUTFILE OUTPUTFILE
     
+**INPUTFILE**: the name of tab-temilited input file, which contains three columns: Size of SVs, Support rate of SVs, and Coverage of SVs. It must contain one header line with the exact names: "Size", "Support", and "Coverage". Size should be the absolute value of Size1.
+
+**OUTPUTFILE**: the output file contains Score1 (score of SV without considering zygosity) and Score2 (score of SV considering zygosity) for each SV.
+ 
 ## Tips
 Please rename the chromosome IDs in the alignment to be **positive integers** before running COMSV. For example, chromosome X to be chromosome 23 and chromosome Y to be chromosome Y. 
 
