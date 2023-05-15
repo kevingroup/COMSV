@@ -28,7 +28,7 @@ After that, simply type
 
     bash run_all.sh
     
-After progrem stops, check the output folder `COMSV_SVs_261T` for the output SV lists.
+After progrem stops, check the output folder `COMSV_SVs_261T` for the output SV lists (indels_dedup.osv, invdup_dedup.osv, and translocation_dedup.osv).
 
 ## Different SV detection components
 There are several components to call SVs in our pipeline:
