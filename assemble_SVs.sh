@@ -96,7 +96,7 @@ paste $outputFolder/indels_dedup.osv val_remove_$smp.txt | awk 'NR==1 || $NF==0'
 sed '/compBeds_3col/d' compiled_SVs_${smp}_rem.bed | cut -f4 > val_remove_$smp.txt
 paste $outputFolder/compiled_SVs_dedup.osv val_remove_$smp.txt | awk 'NR==1 || $NF==0' | cut -f1-8,13,16 | sed '/Deletion\|Insertion/d' | sed 's/-Split/-realigned/g' > $outputFolder/compiled_SVs_dedup_filter.osv && mv $outputFolder/compiled_SVs_dedup_filter.osv $outputFolder/compiled_SVs_dedup.osv
 #Use the following command to filter SVs on Y-chromosome
-#awk '$1<24 && $NF==0' $outputFolder/compiled_SVs_dedup.osv > compiled_SVs_dedup_${smp}.osv && mv compiled_SVs_dedup_${smp}.osv $outputFolder/compiled_SVs_dedup.osv
+#awk '$1<24 && $NF==0' $outputFolder/compiled_SVs_dedup.osv > compiled_SVs_dedup_${smp}.osv && mv compiled_SVs_dedup_${smp}.osv $outputFolder/invdup_dedup.osv
 
 
 rm -f *${smp}*.osv
