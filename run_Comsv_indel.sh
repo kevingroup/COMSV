@@ -25,7 +25,7 @@
     outputFolder="COMSV_SVs_$smp"
     reapF="density_PAR_region_DLE1.bed"
     mkdir -p $outputFolder
-    rm $outputFolder/*
+    rm -f $outputFolder/*
 
     # running initialization with chromosomeID=-1
     ./COMSV_indel -inputRepeatFileName $reapF -inputLabel  $label  -outputFolder  $outputFolder  -chrMapFile $ref -optTempFolder $tpFolder -minIndelSize $siz -chromosomeID -1 -optAlignFile $inputAlign
