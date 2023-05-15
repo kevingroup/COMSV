@@ -20,8 +20,11 @@ Just download the whole package and compile all c++ source files with the script
 Remember to give **execute** permission to all compiled c++ programs (`chmod +x`).
 
 ## One-line command
-We provide a one-line command for a quick start with example data (alignments of sample 261T on chromosome 1).
-In the path of the package, simply type 
+We provide a one-line command for a quick start with example data (alignments of sample 261T on chromosome 1). Please unzip the data first before running the pipeline:
+
+    gunzip 261T*
+
+After that, simply type 
 
     bash run_all.sh
     
